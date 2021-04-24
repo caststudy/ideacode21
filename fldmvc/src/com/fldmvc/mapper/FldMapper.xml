@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fldmvc.mapper.FldMapper">
+
+       <select id="getObject" resultType="Fld" parameterType="Fld">
+           SELECT * FROM  fld
+           where        flda= #{flda}
+       </select>
+
+       <insert id="insert" parameterType="Fld" >
+		INSERT INTO fld(flda, fldb, fldc,fldd) 		VALUES(#{flda}, #{fldb}, #{fldc},#{fldd})
+	   </insert>
+
+    <resultMap type="Fld" id="FLdResultSet">
+        <id property="flda" column="flda" />
+        <result property="fldb" column="fldb" />
+        <result property="fldc" column="fldc" />
+        <result property="fldd" column="fldd" />
+    </resultMap>
+    <select id="getAll" resultMap="FLdResultSet" parameterType="String">
+		SELECT * FROM  fld where  fldb like '%${_parameter}%'
+	</select>
+
+    <delete id="delete" parameterType="int">
+		DELETE FROM  fld WHERE 		flda = #{flda}
+	</delete>
+
+    <update id="update"  parameterType="Fld">
+		UPDATE fld set  flda=#{flda} , fldb=#{fldb} ,fldc=#{fldc},fldd=#{fldd}
+		WHERE 		 flda=#{flda} 
+	</update>
+
+
+</mapper>
