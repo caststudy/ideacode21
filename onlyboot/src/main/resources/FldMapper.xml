@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.onlyboot.mapper.FldMapper">
+
+<select id="getAll" resultType="Map"  parameterType="Map">
+		select * from fld where fldb like '%${fldb}%'
+	</select>
+
+     <select id="getObject" parameterType="Map" resultType="Map">
+		SELECT  		*
+		FROM fld
+		WHERE flda = #{flda}
+		
+		
+	</select>
+   
+
+	
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM fld WHERE
+		flda = #{flda}
+	</delete>
+
+<insert id="insert" parameterType="Map">
+		INSERT INTO fld (flda, fldb, fldc, fldd)
+		VALUES(#{flda},#{fldb},#{fldc},#{fldd})
+	</insert>
+  
+</mapper>
